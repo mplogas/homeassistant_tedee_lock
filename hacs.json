@@ -1,0 +1,6 @@
+{
+    "name": "Tedee Lock",
+    "render_readme": true,
+    "domains": ["lock"],
+    "homeassistant": "2021.7.0"
+}

@@ -1,0 +1,17 @@
+
+{
+  "domain": "tedee",
+  "name": "Tedee Lock",
+  "version": "0.0.2",
+  "config_flow": false,
+  "documentation": "https://github.com/mplogas/homeassistant_tedee_lock.git",
+  "issues": "https://github.com/mplogas/homeassistant_tedee_lock/issues",
+  "dependencies": [],
+  "requirements": [
+    "pytedee>=0.0.1"
+  ],
+  "codeowners": [
+    "@mplogas",
+    "@joerg65"
+  ]
+}
