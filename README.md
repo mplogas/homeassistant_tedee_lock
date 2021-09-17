@@ -1,8 +1,7 @@
 # tedee_lock
 Homeassistant Custom Component
 
-#### original thread
-https://community.home-assistant.io/t/custom-component-tedee-doorlock/242743
+[**original thread**](https://community.home-assistant.io/t/custom-component-tedee-doorlock/242743)
 
 This component is a continuation of @joerg65's great work on providing a [Home Assistant integration](https://github.com/joerg65/tedee_lock) for Tedee locks as well as the [pytedee lib](https://github.com/joerg65/pytedee). 
 He stopped working on the component, so I started to make modifications of my own. To install this component, simply add this repository to HACS.
