@@ -1,0 +1,1 @@
+DOMAIN = "tedee_lock"

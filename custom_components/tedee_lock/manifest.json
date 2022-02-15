@@ -1,0 +1,11 @@
+{
+  "codeowners": ["@mplogas"],
+  "config_flow": false,
+  "dependencies": [],
+  "documentation": "https://github.com/mplogas/homeassistant_tedee_lock",
+  "domain": "tedee_lock",
+  "iot_class": "cloud_polling",
+  "name": "Tedee Lock",
+  "requirements": [],
+  "version": "0.2.0"
+}
