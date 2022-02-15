@@ -6,6 +6,6 @@
   "domain": "tedee_lock",
   "iot_class": "cloud_polling",
   "name": "Tedee Lock",
-  "requirements": [],
+  "requirements": ["pytedee>=0.0.3"],
   "version": "0.2.0"
 }
