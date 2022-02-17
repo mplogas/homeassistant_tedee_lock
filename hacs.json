@@ -1,5 +1,7 @@
 {
   "name": "Tedee Lock",
   "render_readme": true,
-  "iot_class": "cloud_polling"
+  "iot_class": "cloud_polling",
+  "domains": ["lock"],
+  "homeassistant": "2021.7.0"
 }

@@ -1,9 +1,9 @@
 """Platform for lock integration."""
 import logging
 from datetime import timedelta
-from pytedee import TedeeClient
+# from pytedee import TedeeClient
 from pytedee import TedeeClientException
-from pytedee import Lock
+# from pytedee import Lock
 import voluptuous as vol
 
 import pkg_resources
@@ -15,12 +15,8 @@ from homeassistant.helpers.event import async_call_later
 # Import the device class from the component that you want to support
 from homeassistant.components.lock import PLATFORM_SCHEMA, SUPPORT_OPEN, LockEntity
 from homeassistant.const import ATTR_BATTERY_LEVEL, ATTR_ID, CONF_ACCESS_TOKEN, STATE_LOCKED, STATE_UNLOCKED
+from .const import ATTR_CHARGING, ATTR_CONNECTED, ATTR_DURATION_PULLSPRING, ATTR_NUMERIC_STATE, ATTR_SUPPORT_PULLSPING
 
-ATTR_NUMERIC_STATE = "numeric_state"
-ATTR_SUPPORT_PULLSPING = "support_pullspring"
-ATTR_DURATION_PULLSPRING = "duration_pullspring"
-ATTR_CONNECTED = "connected"
-ATTR_CHARGING = "charging"
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -29,23 +25,21 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_ACCESS_TOKEN, default='no access token given'): cv.string,
 })
 
-
-def setup_platform(hass, config, add_entities, discovery_info=None):
-    """Set up the Tedee Lock platform."""
-    try:
-         #_LOGGER.error("Creds: %s, %s", config[CONF_ACCESS_TOKEN])
-        tedee = TedeeClient(config[CONF_ACCESS_TOKEN])
-    except TedeeClientException as exc:
-        _LOGGER.error(exc)
-        return
-    available_locks = tedee.get_locks()
-    _LOGGER.debug("available_locks: %s", available_locks)
-    if not available_locks:
-        # No locks found; abort setup routine.
-        _LOGGER.info("No locks found in your account")
-        return
-    add_entities([TedeeLock(lock, tedee) for lock in available_locks], True)
-
+# def setup_platform(hass, config, add_entities, discovery_info=None):
+#     """Set up the Tedee Lock platform."""
+#     try:
+#          #_LOGGER.error("Creds: %s, %s", config[CONF_ACCESS_TOKEN])
+#         tedee = TedeeClient(config[CONF_ACCESS_TOKEN])
+#     except TedeeClientException as exc:
+#         _LOGGER.error(exc)
+#         return
+#     available_locks = tedee.get_locks()
+#     _LOGGER.debug("available_locks: %s", available_locks)
+#     if not available_locks:
+#         # No locks found; abort setup routine.
+#         _LOGGER.info("No locks found in your account")
+#         return
+#     add_entities([TedeeLock(lock, tedee) for lock in available_locks], True)
 
 class TedeeLock(LockEntity):
     """Representation of a Tedee lock."""
@@ -66,6 +60,7 @@ class TedeeLock(LockEntity):
         if parse_version('0.0.2') <= parse_version(pkg_resources.get_distribution('pytedee').version):
             self._entity_attrs[ATTR_SUPPORT_PULLSPING] = self._sensor.get_is_enabled_pullspring()
             self._entity_attrs[ATTR_DURATION_PULLSPRING] = self._sensor.get_duration_pullspring()
+
 
     @property
     def supported_features(self):
